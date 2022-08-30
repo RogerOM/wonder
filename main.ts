@@ -1,7 +1,7 @@
 input.onLogoEvent(TouchButtonEvent.Pressed, function () {
-    strip.setBrightness(255)
     strip = neopixel.create(DigitalPin.P16, 4, NeoPixelMode.RGB)
     strip.showRainbow(randint(1, 360), randint(1, 360))
+    strip.setBrightness(255)
 })
 input.onButtonPressed(Button.A, function () {
     wuKong.setAllMotor(20, -20)
@@ -18,12 +18,13 @@ input.onButtonPressed(Button.A, function () {
 })
 input.onButtonPressed(Button.B, function () {
     for (let index = 0; index < 2; index++) {
-        wuKong.setServoAngle(wuKong.ServoTypeList._360, wuKong.ServoList.S0, 276)
+        wuKong.setServoAngle(wuKong.ServoTypeList._360, wuKong.ServoList.S0, 189)
         basic.pause(1000)
-        wuKong.setServoAngle(wuKong.ServoTypeList._360, wuKong.ServoList.S0, 325)
+        wuKong.setServoAngle(wuKong.ServoTypeList._360, wuKong.ServoList.S0, 87)
         basic.pause(1000)
     }
 })
 let strip: neopixel.Strip = null
-strip.setBrightness(0)
 wuKong.setLightMode(wuKong.LightMode.BREATH)
+strip = neopixel.create(DigitalPin.P16, 4, NeoPixelMode.RGB)
+strip.setBrightness(1)
