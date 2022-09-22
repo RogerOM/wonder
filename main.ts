@@ -27,6 +27,16 @@ input.onButtonPressed(Button.A, function () {
 input.onGesture(Gesture.ScreenUp, function () {
     RingbitCar.brake()
 })
+input.onButtonPressed(Button.AB, function () {
+    for (let index = 0; index < 100; index++) {
+        led.plotBarGraph(
+        input.lightLevel(),
+        255
+        )
+        basic.pause(100)
+    }
+    basic.clearScreen()
+})
 input.onButtonPressed(Button.B, function () {
     basic.showLeds(`
         # # # . .
