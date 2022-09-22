@@ -1,30 +1,79 @@
-input.onLogoEvent(TouchButtonEvent.Pressed, function () {
-    strip = neopixel.create(DigitalPin.P16, 4, NeoPixelMode.RGB)
-    strip.showRainbow(randint(1, 360), randint(1, 360))
-    strip.setBrightness(255)
-})
 input.onButtonPressed(Button.A, function () {
-    wuKong.setAllMotor(20, -20)
-    basic.pause(1000)
-    wuKong.stopAllMotor()
+    basic.showLeds(`
+        . . # . .
+        . # . # .
+        # . . . #
+        # # # # #
+        # . . . #
+        `)
     basic.pause(500)
-    wuKong.setAllMotor(0, -20)
+    basic.clearScreen()
+    basic.showIcon(IconNames.Target)
+    RingbitCar.running_time(RingbitCar.Direction_run.forward, 1)
+    RingbitCar.running_time(RingbitCar.Direction_run.backward, 1)
     basic.pause(500)
-    wuKong.setAllMotor(20, 0)
-    basic.pause(500)
-    wuKong.setAllMotor(-20, 20)
-    basic.pause(1000)
-    wuKong.stopAllMotor()
+    RingbitCar.steering_angle(RingbitCar.Direction_turn.right, 100)
+    RingbitCar.steering_angle(RingbitCar.Direction_turn.left, 100)
+    basic.showLeds(`
+        . . . . .
+        . . . . .
+        # . . . #
+        . # # # .
+        . . . . .
+        `)
+    basic.pause(5000)
+    basic.clearScreen()
+})
+input.onGesture(Gesture.ScreenUp, function () {
+    RingbitCar.brake()
 })
 input.onButtonPressed(Button.B, function () {
+    basic.showLeds(`
+        # # # . .
+        # . . # .
+        # # # . .
+        # . . # .
+        # # # . .
+        `)
+    basic.pause(500)
+    basic.clearScreen()
+    basic.showLeds(`
+        . . . . .
+        . . . . .
+        . # # # .
+        # . . . #
+        . . . . .
+        `)
     for (let index = 0; index < 2; index++) {
-        wuKong.setServoAngle(wuKong.ServoTypeList._360, wuKong.ServoList.S0, 189)
-        basic.pause(1000)
-        wuKong.setServoAngle(wuKong.ServoTypeList._360, wuKong.ServoList.S0, 87)
-        basic.pause(1000)
+        RingbitCar.steering_angle(RingbitCar.Direction_turn.right, 50)
+        RingbitCar.steering_angle(RingbitCar.Direction_turn.left, 50)
     }
+    RingbitCar.steering_angle(RingbitCar.Direction_turn.right, 800)
+    basic.showLeds(`
+        . . . . .
+        . . . . .
+        # . . . #
+        . # # # .
+        . . . . .
+        `)
+    basic.pause(5000)
+    basic.clearScreen()
 })
-let strip: neopixel.Strip = null
-wuKong.setLightMode(wuKong.LightMode.BREATH)
-strip = neopixel.create(DigitalPin.P16, 4, NeoPixelMode.RGB)
-strip.setBrightness(1)
+RingbitCar.init_wheel(AnalogPin.P0, AnalogPin.P1)
+basic.showIcon(IconNames.Heart)
+basic.pause(1000)
+basic.showIcon(IconNames.Square)
+basic.showIcon(IconNames.SmallSquare)
+basic.showIcon(IconNames.Target)
+basic.showLeds(`
+    . . . . .
+    . . . . .
+    . . # . .
+    . . . . .
+    . . . . .
+    `)
+basic.clearScreen()
+for (let index = 0; index < 4; index++) {
+    led.toggle(2, 2)
+    basic.pause(500)
+}

@@ -1,11 +1,12 @@
 {
-    "name": "Wonder",
+    "name": "Ring:bit",
     "description": "",
     "dependencies": {
         "core": "*",
         "radio": "*",
         "microphone": "*",
-        "wuKong": "github:elecfreaks/pxt-wukong#v1.4.9"
+        "wuKong": "github:elecfreaks/pxt-wukong#v1.4.9",
+        "RingbitCar": "github:tinkertanker/pxt-ringbitcar#v3.1.4"
     },
     "files": [
         "main.blocks",
